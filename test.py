@@ -21,13 +21,9 @@ def test_ok():
     assert isdir(test_iiif)
     assert batch
 
-def test_newspaper():
-    assert len(batch.newspapers) == 1
-
 def test_issue():
-    assert len(batch.newspapers[0].issues) == 1
+    assert len(batch.issues) == 1
 
 def test_page():
-    assert len(batch.newspapers[0].issues[0].pages) == 1
-
+    assert len(batch.issues[0].pages) == 4
 
