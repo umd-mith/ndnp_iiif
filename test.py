@@ -28,6 +28,6 @@ def test_issue():
     assert len(batch.newspapers[0].issues) == 1
 
 def test_page():
-    assert len(batch.newspapers[0].issues[0]) == 
+    assert len(batch.newspapers[0].issues[0].pages) == 1
 
-            
+
