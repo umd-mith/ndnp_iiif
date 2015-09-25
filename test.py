@@ -40,3 +40,8 @@ def test_page():
     assert relpath(p.ocr_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.xml"
     assert p.width == 6739
     assert p.height == 9068
+
+def test_newspaper():
+    n = batch.issues[0].newspaper
+    assert n.lccn == "sn83009569"
+    assert len(n.issues) == 1

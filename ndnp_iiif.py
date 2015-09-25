@@ -74,8 +74,14 @@ class Issue:
         # parse issue date
         self.date_issued = datetime.datetime.strptime(mods.xpath('string(.//mods:dateIssued)', namespaces=ns), '%Y-%m-%d')
 
+        # attach pages
         for page_div in div.xpath('.//mets:div[@TYPE="np:page"]', namespaces=ns):
             self.pages.append(Page(self, doc, page_div))
+
+        # find the newspaper the issue belongs to
+        lccn = mods.xpath('string(.//mods:identifier[@type="lccn"])', namespaces=ns).strip()
+        newspaper = Newspaper.find_or_create(lccn)
+        newspaper.add_issue(self)
 
 
 class Page:
@@ -127,10 +133,24 @@ class Page:
 
 
 class Newspaper:
+    _cache = {}
 
-    def __init__(self):
+    @classmethod
+    def find_or_create(cls, lccn):
+        if lccn in cls._cache:
+            return cls._cache[lccn]
+        else:
+            return Newspaper(lccn)
+
+    def __init__(self, lccn):
+        self.lccn = lccn
         self.issues = []
+        # TODO: get needed metadata from somewhere :)
 
+    def add_issue(self, issue):
+        "link the newspaper to an issue and vice-versa"
+        self.issues.append(issue)
+        issue.newspaper = self
 
 
 def _dmd_mods(doc, dmdid):
@@ -138,4 +158,3 @@ def _dmd_mods(doc, dmdid):
     """
     xpath ='.//mets:dmdSec[@ID="%s"]/descendant::mods:mods' % dmdid
     return doc.xpath(xpath, namespaces=ns)[0]
-
