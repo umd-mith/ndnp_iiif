@@ -15,8 +15,6 @@ ns = {
     'mets'  : 'http://www.loc.gov/METS/',
     'np'    : 'urn:library-of-congress:ndnp:mets:newspaper',
     'xlink' : 'http://www.w3.org/1999/xlink',
-    'mix'   : 'http://www.loc.gov/mix/',
-    'xhtml' : 'http://www.w3.org/1999/xhtml'
 }
 
 
