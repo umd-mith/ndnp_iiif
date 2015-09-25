@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?><mets xmlns="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:mix="http://www.loc.gov/mix/" xmlns:ndnp="http://www.loc.gov/ndnp" xmlns:premis="http://www.loc.gov/standards/premis" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LABEL="Baltimore daily commercial (Baltimore, Md.), 1865-10-04" PROFILE="urn:library-of-congress:mets:profiles:ndnp:issue:v1.5" TYPE="urn:library-of-congress:ndnp:mets:newspaper:issue">
+	<metsHdr ADMID="digSig" CREATEDATE="2014-04-22T12:47:30" RECORDSTATUS="Validated">
+		<agent ROLE="CREATOR" TYPE="ORGANIZATION">
+			<name>University of Maryland; College Park, MD</name>
+		</agent>
+	</metsHdr>
+	<dmdSec ID="issueModsBib">
+		<mdWrap LABEL="Issue metadata" MDTYPE="MODS">
+			<xmlData>
+				<MODS:mods>
+					<MODS:relatedItem type="host">
+						<MODS:identifier type="lccn">sn83009569</MODS:identifier>
+						<MODS:part>
+							<MODS:detail type="volume">
+								<MODS:number>1</MODS:number>
+							</MODS:detail>
+							<MODS:detail type="issue">
+								<MODS:number>3</MODS:number>
+							</MODS:detail>
+							<MODS:detail type="edition">
+								<MODS:number>1</MODS:number>
+							</MODS:detail>
+						</MODS:part>
+					</MODS:relatedItem>
+					<MODS:originInfo>
+						<MODS:dateIssued encoding="iso8601">1865-10-04</MODS:dateIssued>
+					</MODS:originInfo>
+					<MODS:note type="noteAboutReproduction">Present</MODS:note>
+				</MODS:mods>
+			</xmlData>
+		</mdWrap>
+	</dmdSec>
+	<dmdSec ID="pageModsBib1">
+		<mdWrap LABEL="Page metadata" MDTYPE="MODS">
+			<xmlData>
+				<MODS:mods>
+					<MODS:part>
+						<MODS:extent unit="pages">
+							<MODS:start>1</MODS:start>
+						</MODS:extent>
+					</MODS:part>
+					<MODS:relatedItem type="original">
+						<MODS:physicalDescription>
+							<MODS:form type="microfilm"/>
+						</MODS:physicalDescription>
+						<MODS:identifier type="reel number">00296026165</MODS:identifier>
+						<MODS:identifier type="reel sequence number">13</MODS:identifier>
+						<MODS:location>
+							<MODS:physicalLocation authority="marcorg" displayLabel="Library of Congress; Washington, DC">dlc</MODS:physicalLocation>
+						</MODS:location>
+					</MODS:relatedItem>
+					<MODS:note displayLabel="University of Maryland; College Park, MD" type="agencyResponsibleForReproduction">mdu</MODS:note>
+					<MODS:note displayLabel="" type="noteAboutReproduction">Present</MODS:note>
+				</MODS:mods>
+			</xmlData>
+		</mdWrap>
+	</dmdSec>
+	<dmdSec ID="pageModsBib2">
+		<mdWrap LABEL="Page metadata" MDTYPE="MODS">
+			<xmlData>
+				<MODS:mods>
+					<MODS:part>
+						<MODS:extent unit="pages">
+							<MODS:start>2</MODS:start>
+						</MODS:extent>
+					</MODS:part>
+					<MODS:relatedItem type="original">
+						<MODS:physicalDescription>
+							<MODS:form type="microfilm"/>
+						</MODS:physicalDescription>
+						<MODS:identifier type="reel number">00296026165</MODS:identifier>
+						<MODS:identifier type="reel sequence number">14</MODS:identifier>
+						<MODS:location>
+							<MODS:physicalLocation authority="marcorg" displayLabel="Library of Congress; Washington, DC">dlc</MODS:physicalLocation>
+						</MODS:location>
+					</MODS:relatedItem>
+					<MODS:note displayLabel="University of Maryland; College Park, MD" type="agencyResponsibleForReproduction">mdu</MODS:note>
+					<MODS:note displayLabel="" type="noteAboutReproduction">Present</MODS:note>
+				</MODS:mods>
+			</xmlData>
+		</mdWrap>
+	</dmdSec>
+	<dmdSec ID="pageModsBib3">
+		<mdWrap LABEL="Page metadata" MDTYPE="MODS">
+			<xmlData>
+				<MODS:mods>
+					<MODS:part>
+						<MODS:extent unit="pages">
+							<MODS:start>3</MODS:start>
+						</MODS:extent>
+					</MODS:part>
+					<MODS:relatedItem type="original">
+						<MODS:physicalDescription>
+							<MODS:form type="microfilm"/>
+						</MODS:physicalDescription>
+						<MODS:identifier type="reel number">00296026165</MODS:identifier>
+						<MODS:identifier type="reel sequence number">15</MODS:identifier>
+						<MODS:location>
+							<MODS:physicalLocation authority="marcorg" displayLabel="Library of Congress; Washington, DC">dlc</MODS:physicalLocation>
+						</MODS:location>
+					</MODS:relatedItem>
+					<MODS:note displayLabel="University of Maryland; College Park, MD" type="agencyResponsibleForReproduction">mdu</MODS:note>
+					<MODS:note displayLabel="" type="noteAboutReproduction">Present</MODS:note>
+				</MODS:mods>
+			</xmlData>
+		</mdWrap>
+	</dmdSec>
+	<dmdSec ID="pageModsBib4">
+		<mdWrap LABEL="Page metadata" MDTYPE="MODS">
+			<xmlData>
+				<MODS:mods>
+					<MODS:part>
+						<MODS:extent unit="pages">
+							<MODS:start>4</MODS:start>
+						</MODS:extent>
+					</MODS:part>
+					<MODS:relatedItem type="original">
+						<MODS:physicalDescription>
+							<MODS:form type="microfilm"/>
+						</MODS:physicalDescription>
+						<MODS:identifier type="reel number">00296026165</MODS:identifier>
+						<MODS:identifier type="reel sequence number">16</MODS:identifier>
+						<MODS:location>
+							<MODS:physicalLocation authority="marcorg" displayLabel="Library of Congress; Washington, DC">dlc</MODS:physicalLocation>
+						</MODS:location>
+					</MODS:relatedItem>
+					<MODS:note displayLabel="University of Maryland; College Park, MD" type="agencyResponsibleForReproduction">mdu</MODS:note>
+					<MODS:note displayLabel="" type="noteAboutReproduction">Present</MODS:note>
+				</MODS:mods>
+			</xmlData>
+		</mdWrap>
+	</dmdSec><amdSec><techMD ID="mixmasterFile1"><mdWrap LABEL="NISO still image metadata" MDTYPE="NISOIMG"><xmlData><mix:mix><mix:BasicImageParameters><mix:Format><mix:Compression>
+          <mix:CompressionScheme>1</mix:CompressionScheme>
+         </mix:Compression><mix:PhotometricInterpretation>
+          <mix:ColorSpace>1</mix:ColorSpace>
+         </mix:PhotometricInterpretation></mix:Format></mix:BasicImageParameters><mix:ImageCreation><mix:SourceType>microfilm</mix:SourceType><mix:ImageProducer>University of Maryland; Creekside Digital</mix:ImageProducer><mix:ScanningSystemCapture><mix:ScanningSystemHardware>
+          <mix:ScannerManufacturer>nextScan, Inc.</mix:ScannerManufacturer>
+          <mix:ScannerModel>
+           <mix:ScannerModelName>FlexScan, SN# 709012</mix:ScannerModelName>
+          </mix:ScannerModel>
+         </mix:ScanningSystemHardware></mix:ScanningSystemCapture></mix:ImageCreation><mix:ImagingPerformanceAssessment><mix:SpatialMetrics><mix:SamplingFrequencyUnit>2</mix:SamplingFrequencyUnit><mix:XSamplingFrequency>400</mix:XSamplingFrequency><mix:YSamplingFrequency>400</mix:YSamplingFrequency><mix:ImageWidth>6739</mix:ImageWidth><mix:ImageLength>9068</mix:ImageLength></mix:SpatialMetrics><mix:Energetics><mix:BitsPerSample>8</mix:BitsPerSample></mix:Energetics></mix:ImagingPerformanceAssessment></mix:mix></xmlData></mdWrap></techMD><techMD ID="premismasterFile1"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>136573ba774ec78ceea7ebfa7eea7a504894974b</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>61182284</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/tiff</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWorks v6.7-1.20</premis:creatingApplicationName><premis:dateCreatedByApplication>2014-04-22T12:47:04</premis:dateCreatedByApplication></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="mixserviceFile1"><mdWrap LABEL="NISO still image metadata" MDTYPE="NISOIMG"><xmlData><mix:mix><mix:BasicImageParameters><mix:Format><mix:Compression>
+         <mix:CompressionScheme>34712</mix:CompressionScheme>
+        </mix:Compression></mix:Format></mix:BasicImageParameters><mix:ImageCreation/><mix:ImagingPerformanceAssessment><mix:SpatialMetrics><mix:SamplingFrequencyUnit>3</mix:SamplingFrequencyUnit><mix:XSamplingFrequency>157</mix:XSamplingFrequency><mix:YSamplingFrequency>157</mix:YSamplingFrequency><mix:ImageWidth>6739</mix:ImageWidth><mix:ImageLength>9068</mix:ImageLength></mix:SpatialMetrics><mix:Energetics><mix:BitsPerSample>8</mix:BitsPerSample></mix:Energetics></mix:ImagingPerformanceAssessment></mix:mix></xmlData></mdWrap></techMD><techMD ID="premisserviceFile1"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>512648032dd9a1b0d55c745d44cf391f171b39c7</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>7637447</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/jp2</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication/></premis:object></xmlData></mdWrap></techMD><techMD ID="premisotherDerivativeFile1"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>bd4f3f8ea799647ffd217c9affb694a3a7869847</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>5434539</premis:size><premis:format><premis:formatDesignation><premis:formatName>application/pdf</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWORKS/METAe Version 6.7.1.20</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisocrFile1"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>577071318aca1ac23cbb2dcf902b9710ae3c7d1c</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>2539618</premis:size><premis:format><premis:formatDesignation><premis:formatName>text/xml</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>ABBYY (BIT Software), Russia FineReader 10.0</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premismasterFile2"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>85d4abfee37c1666caed86e2be47b8003c29eb2a</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>61182284</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/tiff</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWorks v6.7-1.20</premis:creatingApplicationName><premis:dateCreatedByApplication>2014-04-22T12:47:08</premis:dateCreatedByApplication></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisserviceFile2"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>8991fde3e044fdb5e92414b644224e705235134c</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>7628285</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/jp2</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication/></premis:object></xmlData></mdWrap></techMD><techMD ID="premisotherDerivativeFile2"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>4cab0753a6d2ac1b81acaeec0c78ca9711f720c7</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>4936564</premis:size><premis:format><premis:formatDesignation><premis:formatName>application/pdf</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWORKS/METAe Version 6.7.1.20</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisocrFile2"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>608b43d486682ea2ade4743f48d501c22b6ff9fc</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>1845028</premis:size><premis:format><premis:formatDesignation><premis:formatName>text/xml</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>ABBYY (BIT Software), Russia FineReader 10.0</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="mixmasterFile3"><mdWrap LABEL="NISO still image metadata" MDTYPE="NISOIMG"><xmlData><mix:mix><mix:BasicImageParameters><mix:Format><mix:Compression>
+          <mix:CompressionScheme>1</mix:CompressionScheme>
+         </mix:Compression><mix:PhotometricInterpretation>
+          <mix:ColorSpace>1</mix:ColorSpace>
+         </mix:PhotometricInterpretation></mix:Format></mix:BasicImageParameters><mix:ImageCreation><mix:SourceType>microfilm</mix:SourceType><mix:ImageProducer>University of Maryland; Creekside Digital</mix:ImageProducer><mix:ScanningSystemCapture><mix:ScanningSystemHardware>
+          <mix:ScannerManufacturer>nextScan, Inc.</mix:ScannerManufacturer>
+          <mix:ScannerModel>
+           <mix:ScannerModelName>FlexScan, SN# 709012</mix:ScannerModelName>
+          </mix:ScannerModel>
+         </mix:ScanningSystemHardware></mix:ScanningSystemCapture></mix:ImageCreation><mix:ImagingPerformanceAssessment><mix:SpatialMetrics><mix:SamplingFrequencyUnit>2</mix:SamplingFrequencyUnit><mix:XSamplingFrequency>400</mix:XSamplingFrequency><mix:YSamplingFrequency>400</mix:YSamplingFrequency><mix:ImageWidth>6772</mix:ImageWidth><mix:ImageLength>9055</mix:ImageLength></mix:SpatialMetrics><mix:Energetics><mix:BitsPerSample>8</mix:BitsPerSample></mix:Energetics></mix:ImagingPerformanceAssessment></mix:mix></xmlData></mdWrap></techMD><techMD ID="premismasterFile3"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>0580150d1fa163496870ed031c6832c87f137dd1</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>61393388</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/tiff</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWorks v6.7-1.20</premis:creatingApplicationName><premis:dateCreatedByApplication>2014-04-22T12:47:13</premis:dateCreatedByApplication></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="mixserviceFile3"><mdWrap LABEL="NISO still image metadata" MDTYPE="NISOIMG"><xmlData><mix:mix><mix:BasicImageParameters><mix:Format><mix:Compression>
+         <mix:CompressionScheme>34712</mix:CompressionScheme>
+        </mix:Compression></mix:Format></mix:BasicImageParameters><mix:ImageCreation/><mix:ImagingPerformanceAssessment><mix:SpatialMetrics><mix:SamplingFrequencyUnit>3</mix:SamplingFrequencyUnit><mix:XSamplingFrequency>157</mix:XSamplingFrequency><mix:YSamplingFrequency>157</mix:YSamplingFrequency><mix:ImageWidth>6772</mix:ImageWidth><mix:ImageLength>9055</mix:ImageLength></mix:SpatialMetrics><mix:Energetics><mix:BitsPerSample>8</mix:BitsPerSample></mix:Energetics></mix:ImagingPerformanceAssessment></mix:mix></xmlData></mdWrap></techMD><techMD ID="premisserviceFile3"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>85548c6930243d76d0310d9007361acbfe897020</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>7643395</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/jp2</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication/></premis:object></xmlData></mdWrap></techMD><techMD ID="premisotherDerivativeFile3"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>dabc0a42579be513c2c1895c1597cf53152a9e19</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>5189643</premis:size><premis:format><premis:formatDesignation><premis:formatName>application/pdf</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWORKS/METAe Version 6.7.1.20</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisocrFile3"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>c6a7c6f6858672310bfa73b8b15dfd7afd0ea442</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>2546589</premis:size><premis:format><premis:formatDesignation><premis:formatName>text/xml</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>ABBYY (BIT Software), Russia FineReader 10.0</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premismasterFile4"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>1c274cc513e97adeefa15cba7bf1c6849cb02229</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>61182284</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/tiff</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWorks v6.7-1.20</premis:creatingApplicationName><premis:dateCreatedByApplication>2014-04-22T12:47:18</premis:dateCreatedByApplication></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisserviceFile4"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>035225de5e4128769e6c32e081a2953ea79ff688</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>7638844</premis:size><premis:format><premis:formatDesignation><premis:formatName>image/jp2</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication/></premis:object></xmlData></mdWrap></techMD><techMD ID="premisotherDerivativeFile4"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>73901f2975df3d3b45b333025176911de399f6a3</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>5601912</premis:size><premis:format><premis:formatDesignation><premis:formatName>application/pdf</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>CCS docWORKS/METAe Version 6.7.1.20</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><techMD ID="premisocrFile4"><mdWrap LABEL="PREMIS object metadata" MDTYPE="OTHER" OTHERMDTYPE="PREMIS"><xmlData><premis:object><premis:objectCharacteristics><premis:fixity><premis:messageDigestAlgorithm>SHA-1</premis:messageDigestAlgorithm><premis:messageDigest>92d84ed8000943d5c7583ab8b383254d67c51161</premis:messageDigest><premis:messageDigestOriginator>Library of Congress</premis:messageDigestOriginator></premis:fixity><premis:size>2774792</premis:size><premis:format><premis:formatDesignation><premis:formatName>text/xml</premis:formatName></premis:formatDesignation></premis:format></premis:objectCharacteristics><premis:creatingApplication><premis:creatingApplicationName>ABBYY (BIT Software), Russia FineReader 10.0</premis:creatingApplicationName></premis:creatingApplication></premis:object></xmlData></mdWrap></techMD><digiprovMD ID="digSig"><mdWrap LABEL="Mets record validation signature" MDTYPE="OTHER" OTHERMDTYPE="XML-Signature"><xmlData><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>/2Qie+g9ZvSKN+7S0brpn1LuBcM=</DigestValue></Reference></SignedInfo><SignatureValue>ZGMEjBeANIVF7/1rTVrWYDJQPqAbVli/OC7cwWR3iY+ltDgAa1yvxw==</SignatureValue><KeyInfo><KeyValue><DSAKeyValue><P>/X9TgR11EilS30qcLuzk5/YRt1I870QAwx4/gLZRJmlFXUAiUftZPY1Y+r/F9bow9subVWzXgTuA
+HTRv8mZgt2uZUKWkn5/oBHsQIsJPu6nX/rfGG/g7V+fGqKYVDwT7g/bTxR7DAjVUE1oWkTL2dfOu
+K2HXKu/yIgMZndFIAcc=</P><Q>l2BQjxUjC8yykrmCouuEC/BYHPU=</Q><G>9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3
+zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKL
+Zl6Ae1UlZAFMO/7PSSo=</G><Y>8JQNyzKoVvIvzueAYPDDBh9xnN5lm3a0SdNsUbnlfChwpwUeTNVDksr29Rfx+mybQpwYF8aI9M5b
+PL9XCv8XDF5dFBcv5rmbAIeXbT6KKeql+62PDlS2IHvB0ghO5PjuQTHQysfeME8l6dJpXKZqXAjZ
+txJnEOsotADakQk8aIU=</Y></DSAKeyValue></KeyValue><KeyName>NDNP.3.14</KeyName></KeyInfo></Signature></xmlData></mdWrap></digiprovMD></amdSec>
+	<fileSec>
+		<fileGrp ID="pageFileGrp1">
+			<file ADMID="mixmasterFile1 premismasterFile1" ID="masterFile1" USE="master">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0013.tif"/>
+			</file>
+			<file ADMID="mixserviceFile1 premisserviceFile1" ID="serviceFile1" USE="service">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0013.jp2"/>
+			</file>
+			<file ADMID="premisotherDerivativeFile1" ID="otherDerivativeFile1" USE="derivative">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0013.pdf"/>
+			</file>
+			<file ADMID="premisocrFile1" ID="ocrFile1" USE="ocr">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0013.xml"/>
+			</file>
+		</fileGrp>
+		<fileGrp ID="pageFileGrp2">
+			<file ADMID="mixmasterFile1 premismasterFile2" ID="masterFile2" USE="master">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0014.tif"/>
+			</file>
+			<file ADMID="mixserviceFile1 premisserviceFile2" ID="serviceFile2" USE="service">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0014.jp2"/>
+			</file>
+			<file ADMID="premisotherDerivativeFile2" ID="otherDerivativeFile2" USE="derivative">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0014.pdf"/>
+			</file>
+			<file ADMID="premisocrFile2" ID="ocrFile2" USE="ocr">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0014.xml"/>
+			</file>
+		</fileGrp>
+		<fileGrp ID="pageFileGrp3">
+			<file ADMID="mixmasterFile3 premismasterFile3" ID="masterFile3" USE="master">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0015.tif"/>
+			</file>
+			<file ADMID="mixserviceFile3 premisserviceFile3" ID="serviceFile3" USE="service">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0015.jp2"/>
+			</file>
+			<file ADMID="premisotherDerivativeFile3" ID="otherDerivativeFile3" USE="derivative">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0015.pdf"/>
+			</file>
+			<file ADMID="premisocrFile3" ID="ocrFile3" USE="ocr">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0015.xml"/>
+			</file>
+		</fileGrp>
+		<fileGrp ID="pageFileGrp4">
+			<file ADMID="mixmasterFile1 premismasterFile4" ID="masterFile4" USE="master">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0016.tif"/>
+			</file>
+			<file ADMID="mixserviceFile1 premisserviceFile4" ID="serviceFile4" USE="service">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0016.jp2"/>
+			</file>
+			<file ADMID="premisotherDerivativeFile4" ID="otherDerivativeFile4" USE="derivative">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0016.pdf"/>
+			</file>
+			<file ADMID="premisocrFile4" ID="ocrFile4" USE="ocr">
+				<FLocat LOCTYPE="OTHER" OTHERLOCTYPE="file" xlink:href="./0016.xml"/>
+			</file>
+		</fileGrp>
+	</fileSec>
+	<structMap xmlns:np="urn:library-of-congress:ndnp:mets:newspaper">
+		<div DMDID="issueModsBib" TYPE="np:issue">
+			<div DMDID="pageModsBib1" TYPE="np:page">
+				<fptr FILEID="masterFile1"/>
+				<fptr FILEID="serviceFile1"/>
+				<fptr FILEID="otherDerivativeFile1"/>
+				<fptr FILEID="ocrFile1"/>
+			</div>
+			<div DMDID="pageModsBib2" TYPE="np:page">
+				<fptr FILEID="masterFile2"/>
+				<fptr FILEID="serviceFile2"/>
+				<fptr FILEID="otherDerivativeFile2"/>
+				<fptr FILEID="ocrFile2"/>
+			</div>
+			<div DMDID="pageModsBib3" TYPE="np:page">
+				<fptr FILEID="masterFile3"/>
+				<fptr FILEID="serviceFile3"/>
+				<fptr FILEID="otherDerivativeFile3"/>
+				<fptr FILEID="ocrFile3"/>
+			</div>
+			<div DMDID="pageModsBib4" TYPE="np:page">
+				<fptr FILEID="masterFile4"/>
+				<fptr FILEID="serviceFile4"/>
+				<fptr FILEID="otherDerivativeFile4"/>
+				<fptr FILEID="ocrFile4"/>
+			</div>
+		</div>
+	</structMap>
+</mets>

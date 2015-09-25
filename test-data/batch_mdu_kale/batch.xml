@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch xmlns:ndnp="http://www.loc.gov/ndnp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/ndnp" xsi:schemaLocation="http://www.loc.gov/ndnp ./schema/ndnpBatch.xsd" name="batch_mdu_kale" awardee="mdu" awardYear="2012">
+    <issue lccn="sn83009569" issueDate="1865-10-04" editionOrder="1">../batch_mdu_kale/sn83009569/00296026165/1865100401/1865100401.xml</issue>
+</batch>
