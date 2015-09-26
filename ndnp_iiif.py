@@ -97,8 +97,14 @@ class Issue:
         self._read()
 
     @property
+    def date_issued_str(self):
+        "pre-1900 dates don't format on python 2.7"
+        d = self.date_issued
+        return "%4i-%02i-%02i" % (d.year, d.month, d.day)
+    
+    @property
     def id(self):
-        return "%s/%s.json" % (self.newspaper.lccn, self.date_issued.strftime("%Y-%m-%d"))
+        return "%s/%s.json" % (self.newspaper.lccn, self.date_issued_str)
 
     def _read(self):
         doc = etree.parse(self.mets_file)
@@ -192,7 +198,7 @@ class Newspaper:
 
     @property
     def id(self):
-        return "%s.json" % self.lccn
+        return "%s/newspaper.json" % self.lccn
 
     def write_iiif(self, iiif_dir):
         path = join(iiif_dir, self.id)
@@ -207,12 +213,12 @@ class Newspaper:
             manifests.append({
                 "@id": issue.id,
                 "@type": "sc:Manifest",
-                "label": issue.date_issued.strftime("%Y-%m-%d")
+                "label": issue.date_issued_str
             })
 
         return {
             "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": "%s.json" % self.lccn,
+            "@id": self.id,
             "@type": "sc:Collection",
             "label": "Newspaper",
             "attribution": "Provided by Example Organization",

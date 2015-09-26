@@ -1,4 +1,6 @@
 __pycache__
 .cache
 *.pyc
-.sublime-project*
+*.sublime-*
+*.sublime-*
+test-data

@@ -50,5 +50,5 @@ def test_newspaper():
 def test_collection():
     collection = json.load(open(join(test_iiif, "newspapers.json")))
     assert len(collection['collections']) == 1
-    subcollection = json.load(open(join(test_iiif, "sn83009569.json")))
+    subcollection = json.load(open(join(test_iiif, "sn83009569", "newspaper.json")))
     assert len(subcollection['manifests']) == 1
