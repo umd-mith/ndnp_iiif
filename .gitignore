@@ -3,4 +3,4 @@ __pycache__
 *.pyc
 *.sublime-*
 *.sublime-*
-test-data
+test-data/iiif
