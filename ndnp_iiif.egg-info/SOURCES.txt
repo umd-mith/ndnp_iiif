@@ -1,0 +1,7 @@
+ndnp_iiif.py
+setup.py
+ndnp_iiif.egg-info/PKG-INFO
+ndnp_iiif.egg-info/SOURCES.txt
+ndnp_iiif.egg-info/dependency_links.txt
+ndnp_iiif.egg-info/requires.txt
+ndnp_iiif.egg-info/top_level.txt
