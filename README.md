@@ -10,4 +10,4 @@ batch directory, and a directory where you would like to store your IIIF manifes
     % ndnp_iiif.py /vol/ndnp/batch_mdu_kale/ /var/www/ndnp/
 
 [IIIF]: http://iiif.io
-[National Digital Newpspaer Program]: http://www.loc.gov/ndnp/
+[National Digital Newspaper Program]: http://www.loc.gov/ndnp/
