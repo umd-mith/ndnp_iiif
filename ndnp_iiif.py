@@ -3,6 +3,7 @@
 import json
 import datetime
 
+from os import mkdir
 from PIL import Image
 from lxml import etree
 from os.path import abspath, dirname, isdir, isfile, join
@@ -19,7 +20,9 @@ ns = {
 
 
 def load_batch(batch_dir, iiif_dir):
-    return Batch(batch_dir)
+    batch = Batch(batch_dir)
+    batch.write_iiif(iiif_dir)
+    return batch
 
 
 class Batch:
@@ -30,6 +33,39 @@ class Batch:
         self.dir = abspath(batch_dir) + "/"
         self.issues = []
         self._read()
+
+    @property
+    def newspapers(self):
+        n = set()
+        for issue in self.issues:
+            n.add(issue.newspaper)
+        return list(n)
+
+    def write_iiif(self, iiif_dir):
+        path = join(iiif_dir, "newspapers.json")
+        json.dump(self.iiif(), open(path, "w"), indent=2)
+        for newspaper in self.newspapers:
+            newspaper.write_iiif(iiif_dir)
+
+    def iiif(self):
+        collections = []
+        for newspaper in self.newspapers:
+            collections.append({
+                "@id": newspaper.id,
+                "@type": "sc:Collection",
+                # TODO: put the newspaper title here
+                "label": newspaper.lccn
+            })
+
+        return {
+            "@context": "http://iiif.io/api/presentation/2/context.json",
+            "@id": "newspapers.json",
+            "@type": "sc:Collection",
+            "label": "Top Level Collection for Example Organization",
+            "description": "Description of Collection",
+            "attribution": "Provided by Example Organization",
+            "collections": collections,
+        }
 
     def _read(self):
         batch_file = self._find_batch_file()
@@ -52,8 +88,17 @@ class Issue:
     def __init__(self, batch, mets_file):
         self.batch = batch
         self.mets_file = mets_file
+        self.volumne = None
+        self.number = None
+        self.edition = None
+        self.edition_label = None
+        self.date_issued = None
         self.pages = []
         self._read()
+
+    @property
+    def id(self):
+        return "%s/%s.json" % (self.newspaper.lccn, self.date_issued.strftime("%Y-%m-%d"))
 
     def _read(self):
         doc = etree.parse(self.mets_file)
@@ -144,6 +189,35 @@ class Newspaper:
         self.lccn = lccn
         self.issues = []
         # TODO: get needed metadata from somewhere :)
+
+    @property
+    def id(self):
+        return "%s.json" % self.lccn
+
+    def write_iiif(self, iiif_dir):
+        path = join(iiif_dir, self.id)
+        dir = dirname(path)
+        if not isdir(dir):
+            mkdir(dir)
+        json.dump(self.iiif(), open(path, "w"), indent=2)
+
+    def iiif(self):
+        manifests = []
+        for issue in self.issues:
+            manifests.append({
+                "@id": issue.id,
+                "@type": "sc:Manifest",
+                "label": issue.date_issued.strftime("%Y-%m-%d")
+            })
+
+        return {
+            "@context": "http://iiif.io/api/presentation/2/context.json",
+            "@id": "%s.json" % self.lccn,
+            "@type": "sc:Collection",
+            "label": "Newspaper",
+            "attribution": "Provided by Example Organization",
+            "manifests": manifests
+        }
 
     def add_issue(self, issue):
         "link the newspaper to an issue and vice-versa"

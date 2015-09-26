@@ -1,4 +1,5 @@
 import os
+import json
 import pytest
 import shutil
 
@@ -45,3 +46,9 @@ def test_newspaper():
     n = batch.issues[0].newspaper
     assert n.lccn == "sn83009569"
     assert len(n.issues) == 1
+
+def test_collection():
+    collection = json.load(open(join(test_iiif, "newspapers.json")))
+    assert len(collection['collections']) == 1
+    subcollection = json.load(open(join(test_iiif, "sn83009569.json")))
+    assert len(subcollection['manifests']) == 1
