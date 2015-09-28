@@ -69,5 +69,5 @@ def test_iiif_data():
 
     canvas = manifest['sequences'][0]['canvases'][0]
     assert canvas['@id'] == '/sn83009569/1865-10-04/1'
-    assert canvas['images'][0]['resource']['service']['@id'] == '/sn83009569/1865-10-04/1/'
+    assert canvas['images'][0]['resource']['service']['@id'] == '/sn83009569/1865-10-04/1'
 

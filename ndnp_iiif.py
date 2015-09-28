@@ -224,13 +224,17 @@ class Page:
 
     @property
     def service_uri(self):
-        return self.uri + "/"
+        return self.uri
 
     def generate_tiles(self, dest):
         from iiif.static import IIIFStatic
         print "%s -> %s" % (self.tiff_filename, dest)
         sg = IIIFStatic(self.tiff_filename, dest, 1024, "2.0")
-        sg.generate(self.tiff_filename, 'http://0.0.0.0' + self.uri)
+        sg.generate()
+        info_path = join(dest, "info.json")
+        info = json.load(open(info_path))
+        info['@id'] = self.service_uri
+        json.dump(info, open(info_path, 'w'), indent=2)
 
     def _read(self, doc, div):
         dmdid = div.attrib['DMDID']
