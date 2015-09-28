@@ -19,9 +19,9 @@ ns = {
 }
 
 
-def load_batch(batch_dir, iiif_dir):
+def load_batch(batch_dir, iiif_dir, base_uri=""):
     batch = Batch(batch_dir)
-    batch.write_iiif(iiif_dir)
+    batch.write_iiif(iiif_dir, base_uri)
     return batch
 
 
@@ -41,13 +41,16 @@ class Batch:
             n.add(issue.newspaper)
         return list(n)
 
-    def write_iiif(self, iiif_dir):
+    def id(self, base_uri):
+        return join(base_uri, "newspapers.json")
+
+    def write_iiif(self, iiif_dir, base_uri):
         path = join(iiif_dir, "newspapers.json")
-        json.dump(self.iiif(), open(path, "w"), indent=2)
+        json.dump(self.iiif(base_uri), open(path, "w"), indent=2)
         for newspaper in self.newspapers:
             newspaper.write_iiif(iiif_dir)
 
-    def iiif(self):
+    def iiif(self, base_uri):
         collections = []
         for newspaper in self.newspapers:
             collections.append({
@@ -59,7 +62,7 @@ class Batch:
 
         return {
             "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": "newspapers.json",
+            "@id": self.id(base_uri),
             "@type": "sc:Collection",
             "label": "Top Level Collection for Example Organization",
             "description": "Description of Collection",
