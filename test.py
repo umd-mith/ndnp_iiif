@@ -2,6 +2,7 @@ import os
 import json
 import pytest
 import shutil
+import datetime
 
 from ndnp_iiif import load_batch
 from os.path import dirname, isdir, join, relpath
@@ -31,10 +32,13 @@ def test_issue():
     assert i.number == "3"
     assert i.edition == 1
     assert i.edition_label == ""
+    assert i.date_issued_str == "1865-10-04"
 
 def test_page():
     assert len(batch.issues[0].pages) == 4
     p = batch.issues[0].pages[3]
+    assert p.sequence == 4
+    assert p.number == ""
     assert relpath(p.tiff_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.tif"
     assert relpath(p.jp2_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.jp2"
     assert relpath(p.pdf_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.pdf"
@@ -47,9 +51,17 @@ def test_newspaper():
     assert n.lccn == "sn83009569"
     assert len(n.issues) == 1
 
-def test_collection():
+def test_iiif_data():
     collection = json.load(open(join(test_iiif, "newspapers.json")))
-    assert collection['@id'] == "newspapers.json"
+    assert collection['@id'] == "/newspapers.json"
+
     assert len(collection['collections']) == 1
     subcollection = json.load(open(join(test_iiif, "sn83009569", "newspaper.json")))
+    assert subcollection['@id'] == "/sn83009569/newspaper.json"
+
     assert len(subcollection['manifests']) == 1
+    manifest = json.load(open(join(test_iiif, "sn83009569", "1865-10-04", "issue.json")))
+
+
+
+

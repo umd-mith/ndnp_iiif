@@ -29,7 +29,7 @@ setup(
     scripts = ['ndnp_iiif.py'],
     description = 'convert ndnp data to iiif',
     test_suite = 'test',
-    install_requires = requirements,
+    #install_requires = requirements,
     cmdclass = {'test': PyTest},
     tests_require = ['pytest'],
 )

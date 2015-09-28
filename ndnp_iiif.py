@@ -6,6 +6,7 @@ import datetime
 from os import mkdir
 from PIL import Image
 from lxml import etree
+from six.moves.urllib.parse import urljoin
 from os.path import abspath, dirname, isdir, isfile, join
 
 # some xml namespaces used in NDNP data
@@ -19,18 +20,19 @@ ns = {
 }
 
 
-def load_batch(batch_dir, iiif_dir, base_uri=""):
-    batch = Batch(batch_dir)
-    batch.write_iiif(iiif_dir, base_uri)
+def load_batch(batch_dir, iiif_dir, base_uri="/"):
+    batch = Batch(batch_dir, base_uri)
+    batch.write_iiif(iiif_dir)
     return batch
 
 
 class Batch:
 
-    def __init__(self, batch_dir):
+    def __init__(self, batch_dir, base_uri):
         if not isdir(batch_dir):
             raise Exception("no such directory: %s" % batch_dir)
         self.dir = abspath(batch_dir) + "/"
+        self.base_uri = base_uri
         self.issues = []
         self._read()
 
@@ -41,20 +43,23 @@ class Batch:
             n.add(issue.newspaper)
         return list(n)
 
-    def id(self, base_uri):
-        return join(base_uri, "newspapers.json")
+    @property
+    def uri(self):
+        return urljoin(self.base_uri, "newspapers.json")
 
-    def write_iiif(self, iiif_dir, base_uri):
+    def write_iiif(self, iiif_dir):
         path = join(iiif_dir, "newspapers.json")
-        json.dump(self.iiif(base_uri), open(path, "w"), indent=2)
+        json.dump(self.iiif(), open(path, "w"), indent=2)
         for newspaper in self.newspapers:
             newspaper.write_iiif(iiif_dir)
+            for issue in self.issues:
+                issue.write_iiif(iiif_dir)
 
-    def iiif(self, base_uri):
+    def iiif(self):
         collections = []
         for newspaper in self.newspapers:
             collections.append({
-                "@id": newspaper.id,
+                "@id": newspaper.uri,
                 "@type": "sc:Collection",
                 # TODO: put the newspaper title here
                 "label": newspaper.lccn
@@ -62,7 +67,7 @@ class Batch:
 
         return {
             "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": self.id(base_uri),
+            "@id": self.uri,
             "@type": "sc:Collection",
             "label": "Top Level Collection for Example Organization",
             "description": "Description of Collection",
@@ -104,10 +109,63 @@ class Issue:
         "pre-1900 dates don't format on python 2.7"
         d = self.date_issued
         return "%4i-%02i-%02i" % (d.year, d.month, d.day)
-    
+
     @property
-    def id(self):
-        return "%s/%s.json" % (self.newspaper.lccn, self.date_issued_str)
+    def uri(self):
+        return urljoin(self.newspaper.uri, join(self.date_issued_str, "issue.json"))
+
+    def write_iiif(self, iiif_dir):
+        path = join(iiif_dir, self.uri.lstrip("/"))
+        dir = dirname(path)
+        if not isdir(dir):
+            mkdir(dir)
+        json.dump(self.iiif(iiif_dir), open(path, "w"), indent=2)
+
+    def iiif(self, iiif_dir):
+        canvases = []
+        for page in self.pages:
+            tiles_dir = join(iiif_dir, page.uri.lstrip("/"))
+            page.generate_tiles(tiles_dir)
+            canvases.append({
+                "@id": page.uri,
+                "@type": "sc:Canvas",
+                "label": "page %s" % page.number,
+                "height": page.height,
+                "width": page.width,
+                "thumbnail": page.thumbnail,
+                "images": [{
+                    "@id": page.uri,
+                    "@type": "oa:Annotation",
+                    "motivation": "sc:painting",
+                    "resources": {
+                        "@id": page.uri,
+                        "@type": "dctypes:Image",
+                        "format": "image/jpeg",
+                        "height": page.height,
+                        "width": page.width,
+                        "service": {
+                            "@id": page.service_uri,
+                            "@context": "http://iiif.io/api/image/2/context.json",
+                            "profile": "http://iiif.io/api/image/2/level0.json"
+                        }
+                    }
+                }]
+            })
+
+        sequence = {
+            "@id": "normal",
+            "@type": "sc:Sequence",
+            "label": "page order",
+            "canvases": canvases,
+        }
+
+        return {
+            "@context": "http://iiif.io/api/presentation/2/context.json",
+            "@id": self.uri,
+            "@type": "sc:Manifest",
+            "label": self.date_issued_str,
+            "sequences": [sequence]
+        }
 
     def _read(self):
         doc = etree.parse(self.mets_file)
@@ -140,6 +198,8 @@ class Page:
 
     def __init__(self, issue, doc, div):
         self.issue = issue
+        self.sequence = None
+        self.number = None
         self.tiff_filename = None
         self.jp2_filename = None
         self.pdf_filename = None
@@ -149,6 +209,24 @@ class Page:
         self.height = None
 
         self._read(doc, div)
+
+    @property
+    def uri(self):
+        return urljoin(self.issue.uri, str(self.sequence))
+
+    @property
+    def thumbnail(self):
+        return "thumbnail.jpg"
+
+    @property
+    def service_uri(self):
+        return urljoin(self.issue.uri, self.number)
+
+    def generate_tiles(self, dest):
+        from iiif.static import IIIFStatic
+        print "%s -> %s" % (self.tiff_filename, dest)
+        sg = IIIFStatic(self.tiff_filename, dest, 1024, "2.0")
+        sg.generate()
 
     def _read(self, doc, div):
         dmdid = div.attrib['DMDID']
@@ -200,11 +278,11 @@ class Newspaper:
         # TODO: get needed metadata from somewhere :)
 
     @property
-    def id(self):
-        return "%s/newspaper.json" % self.lccn
+    def uri(self):
+        return urljoin(self.issues[0].batch.uri, join(self.lccn, "newspaper.json"))
 
     def write_iiif(self, iiif_dir):
-        path = join(iiif_dir, self.id)
+        path = join(iiif_dir, self.uri.lstrip("/"))
         dir = dirname(path)
         if not isdir(dir):
             mkdir(dir)
@@ -214,14 +292,14 @@ class Newspaper:
         manifests = []
         for issue in self.issues:
             manifests.append({
-                "@id": issue.id,
+                "@id": issue.uri,
                 "@type": "sc:Manifest",
                 "label": issue.date_issued_str
             })
 
         return {
             "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": self.id,
+            "@id": self.uri,
             "@type": "sc:Collection",
             "label": "Newspaper",
             "attribution": "Provided by Example Organization",
