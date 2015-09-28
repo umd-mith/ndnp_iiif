@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import json
 import datetime
 
@@ -132,12 +133,12 @@ class Issue:
                 "label": "page %s" % page.number,
                 "height": page.height,
                 "width": page.width,
-                "thumbnail": page.thumbnail,
+                "thumbnail": page.thumbnail(tiles_dir),
                 "images": [{
                     "@id": page.uri,
                     "@type": "oa:Annotation",
                     "motivation": "sc:painting",
-                    "resources": {
+                    "resource": {
                         "@id": page.uri,
                         "@type": "dctypes:Image",
                         "format": "image/jpeg",
@@ -214,19 +215,22 @@ class Page:
     def uri(self):
         return urljoin(self.issue.uri, str(self.sequence))
 
-    @property
-    def thumbnail(self):
-        return "thumbnail.jpg"
+    def thumbnail(self, tiles_dir):
+        width_dirs = os.listdir(join(tiles_dir, "full"))
+        width_dirs = [s.strip(",") for s in width_dirs]
+        width_dirs.sort(lambda a, b: cmp(int(b), int(a)))
+        max_width = width_dirs[0]
+        return join(self.uri, "full", max_width, '0', 'default.jpg')
 
     @property
     def service_uri(self):
-        return urljoin(self.issue.uri, self.number)
+        return self.uri + "/"
 
     def generate_tiles(self, dest):
         from iiif.static import IIIFStatic
         print "%s -> %s" % (self.tiff_filename, dest)
         sg = IIIFStatic(self.tiff_filename, dest, 1024, "2.0")
-        sg.generate()
+        sg.generate(self.tiff_filename, 'http://0.0.0.0' + self.uri)
 
     def _read(self, doc, div):
         dmdid = div.attrib['DMDID']

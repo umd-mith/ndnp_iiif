@@ -52,6 +52,8 @@ def test_newspaper():
     assert len(n.issues) == 1
 
 def test_iiif_data():
+    #shutil.copytree("test-data/demo/mirador", "test-data/iiif/mirador")
+    #shutil.copyfile("test-data/demo/index.html", "test-data/iiif/index.html")
     collection = json.load(open(join(test_iiif, "newspapers.json")))
     assert collection['@id'] == "/newspapers.json"
 
@@ -61,7 +63,11 @@ def test_iiif_data():
 
     assert len(subcollection['manifests']) == 1
     manifest = json.load(open(join(test_iiif, "sn83009569", "1865-10-04", "issue.json")))
+    assert manifest['@id'] == '/sn83009569/1865-10-04/issue.json'
 
+    assert len(manifest['sequences'][0]['canvases']), 4
 
-
+    canvas = manifest['sequences'][0]['canvases'][0]
+    assert canvas['@id'] == '/sn83009569/1865-10-04/1'
+    assert canvas['images'][0]['resource']['service']['@id'] == '/sn83009569/1865-10-04/1/'
 
