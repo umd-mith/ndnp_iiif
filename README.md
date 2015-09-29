@@ -2,7 +2,21 @@
 
 [![Build Status](https://travis-ci.org/umd-mith/ndnp_iiif.svg)](http://travis-ci.org/umd-mith/ndnp_iiif)
 
-`ndnp_iiif.py` is a command line tool for creating [IIIF] manifests for [National Digital Newspaper Program] data. This is a work in progress, so check back soon! Please feel free to submit issues if you have questions or ideas.
+`ndnp_iiif.py` is a command line tool for creating [IIIF] manifests for
+[National Digital Newspaper Program] data. This IIIF data can then be mounted
+on the Web and viewed using a IIIF compatible viewer. For example, [here] is 
+an example of viewing a single issue in Mirador. The manifests and generated
+tiles are published here on GitHub using GitHub Pages.
+
+## Install
+
+Soon you'll be able to `pip install ndnp_iiif` but for now you'll have to:
+
+    git clone https://github.com/umd-mith/ndnp_iiif
+    pip install -r requirements.txt
+    python setup.py install
+
+## Usage: 
 
 The basic idea is you point `ndnp_iiif.py` at a path where you have an NDNP
 batch stored, and a directory where you would like to build your IIIF data.
@@ -398,3 +412,4 @@ web:
 
 [IIIF]: http://iiif.io
 [National Digital Newspaper Program]: http://www.loc.gov/ndnp/
+[here]: http://mith.us/ndnp_iiif
