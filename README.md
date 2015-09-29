@@ -4,9 +4,10 @@
 
 `ndnp_iiif.py` is a command line tool for creating [IIIF] manifests for
 [National Digital Newspaper Program] data. This IIIF data can then be mounted
-on the Web and viewed using a IIIF compatible viewer. For example, [here] is 
-an example of viewing a single issue in Mirador. The manifests and generated
-tiles are published here on GitHub using GitHub Pages.
+on the Web and viewed using a IIIF compatible viewer.
+
+For example, [here] is an example of viewing a single issue in Mirador. The 
+manifests and generated tiles are published here on GitHub using GitHub Pages.
 
 ## Install
 
