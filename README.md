@@ -9,7 +9,10 @@ batch stored, and a directory where you would like to build your IIIF data.
 
     % ndnp_iiif.py /vol/ndnp/batch_mdu_kale/ /var/www
 
-The resulting IIIF data will be laid out on the filesystem like this:
+By default `ndnp_iiif.py` will cut static tiles for the page images that
+will be referenced in the manifests. The resulting IIIF data will be laid out 
+on the filesystem like a static site that you can then make available on the
+web:
 
 ```
 /var/www
