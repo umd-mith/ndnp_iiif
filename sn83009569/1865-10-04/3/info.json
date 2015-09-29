@@ -1,0 +1,29 @@
+{
+  "profile": [
+    "http://iiif.io/api/image/2/level0.json", 
+    {
+      "qualities": [
+        "default"
+      ], 
+      "formats": [
+        "jpg"
+      ]
+    }
+  ], 
+  "tiles": [
+    {
+      "width": 1024, 
+      "scaleFactors": [
+        1, 
+        2, 
+        4, 
+        8
+      ]
+    }
+  ], 
+  "protocol": "http://iiif.io/api/image", 
+  "height": 9055, 
+  "width": 6772, 
+  "@context": "http://iiif.io/api/image/2/context.json", 
+  "@id": "/sn83009569/1865-10-04/3"
+}
