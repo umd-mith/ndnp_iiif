@@ -26,7 +26,7 @@
               "@type": "oa:Annotation"
             }
           ], 
-          "label": "page ", 
+          "label": "page 1", 
           "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/1", 
           "@type": "sc:Canvas"
         }, 
@@ -53,7 +53,7 @@
               "@type": "oa:Annotation"
             }
           ], 
-          "label": "page ", 
+          "label": "page 2", 
           "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/2", 
           "@type": "sc:Canvas"
         }, 
@@ -80,7 +80,7 @@
               "@type": "oa:Annotation"
             }
           ], 
-          "label": "page ", 
+          "label": "page 3", 
           "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/3", 
           "@type": "sc:Canvas"
         }, 
@@ -107,7 +107,7 @@
               "@type": "oa:Annotation"
             }
           ], 
-          "label": "page ", 
+          "label": "page 4", 
           "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/4", 
           "@type": "sc:Canvas"
         }
@@ -119,5 +119,5 @@
   ], 
   "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/issue.json", 
   "@type": "sc:Manifest", 
-  "label": "1865-10-04"
+  "label": "Baltimore Daily Commercial (1865-10-04)"
 }
