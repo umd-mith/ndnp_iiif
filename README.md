@@ -14,6 +14,7 @@ manifests and generated tiles are published here on GitHub using GitHub Pages.
 Soon you'll be able to `pip install ndnp_iiif` but for now you'll have to:
 
     git clone https://github.com/umd-mith/ndnp_iiif
+    cd ndnp_iiif
     pip install -r requirements.txt
     python setup.py install
 
