@@ -25,5 +25,5 @@
   "height": 9055, 
   "width": 6772, 
   "@context": "http://iiif.io/api/image/2/context.json", 
-  "@id": "/sn83009569/1865-10-04/3"
+  "@id": "https://umd-mith.github.io/ndnp_iiif/sn83009569/1865-10-04/3"
 }
