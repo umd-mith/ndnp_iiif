@@ -224,7 +224,6 @@ class Page:
         self.jp2_filename = None
         self.pdf_filename = None
         self.ocr_filename = None
-        self.tiff_filename = None
         self.width = None
         self.height = None
 
