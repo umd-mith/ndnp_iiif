@@ -32,14 +32,13 @@ def main():
     if not isdir(args.batch_dir):
         print("no such directory %s" % args.batch_dir)
         return
-    if not isdir(args.iiif_dir):
-        print("no such directory %s" % args.iiif_dir)
-        return
     batch = load_batch(args.batch_dir, args.iiif_dir, args.base_uri)
     # TODO: print out stats
 
 
 def load_batch(batch_dir, iiif_dir, base_uri="/"):
+    if not isdir(iiif_dir):
+        mkdir(iiif_dir)
     batch = Batch(batch_dir, base_uri)
     batch.write_iiif(iiif_dir)
     return batch
@@ -68,6 +67,8 @@ class Batch:
 
     def write_iiif(self, iiif_dir):
         path = join(iiif_dir, "newspapers.json")
+        if not isdir(dirname(path)):
+            os.mkdir(dirname(path))
         json.dump(self.iiif(), open(path, "w"), indent=2)
         for newspaper in self.newspapers:
             newspaper.write_iiif(iiif_dir)
@@ -309,6 +310,7 @@ class Newspaper:
         path = join(iiif_dir, self.uri.lstrip("/"))
         dir = dirname(path)
         if not isdir(dir):
+            print "making %s" % dir
             mkdir(dir)
         json.dump(self.iiif(), open(path, "w"), indent=2)
 
