@@ -1,5 +1,0 @@
-six
-lxml
-pillow
-pytest
-git+https://github.com/edsu/iiif.git@fix-off-by-one-sizes
