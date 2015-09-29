@@ -2,11 +2,13 @@
 
 import os
 import json
+import argparse
 import datetime
 
 from os import mkdir
 from PIL import Image
 from lxml import etree
+from iiif.static import IIIFStatic
 from six.moves.urllib.parse import urljoin
 from os.path import abspath, dirname, isdir, isfile, join
 
@@ -19,6 +21,21 @@ ns = {
     'np'    : 'urn:library-of-congress:ndnp:mets:newspaper',
     'xlink' : 'http://www.w3.org/1999/xlink',
 }
+
+
+def main():
+    parser = argparse.ArgumentParser(description="convert ndnp to iiif")
+    parser.add_argument('batch_dir', type=str, help="ndnp batch directory")
+    parser.add_argument('iiif_dir', type=str, help="where to write iiif")
+    args = parser.parse_args()
+    if not isdir(args.batch_dir):
+        print("no such directory %s" % args.batch_dir)
+        return
+    if not isdir(args.iiif_dir):
+        print("no such directory %s" % args.iiif_dir)
+        return
+    batch = load_batch(args.batch_dir, args.iiif_dir)
+    # TODO: print out stats
 
 
 def load_batch(batch_dir, iiif_dir, base_uri="/"):
@@ -227,8 +244,6 @@ class Page:
         return self.uri
 
     def generate_tiles(self, dest):
-        from iiif.static import IIIFStatic
-        print "%s -> %s" % (self.tiff_filename, dest)
         sg = IIIFStatic(self.tiff_filename, dest, 1024, "2.0")
         sg.generate()
         info_path = join(dest, "info.json")
@@ -325,3 +340,7 @@ def _dmd_mods(doc, dmdid):
     """
     xpath ='.//mets:dmdSec[@ID="%s"]/descendant::mods:mods' % dmdid
     return doc.xpath(xpath, namespaces=ns)[0]
+
+
+if __name__ == "__main__":
+    main()
