@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/umd-mith/ndnp_iiif.svg)](http://travis-ci.org/umd-mith/ndnp_iiif)
 
-ndnp_iiif is a command line tool for creating [IIIF] manifests for [National Digital Newspaper Program] data. This is a work in progress, so check back soon! Please feel free to submit issues if you have questions or ideas.
+`ndnp_iiif.py` is a command line tool for creating [IIIF] manifests for [National Digital Newspaper Program] data. This is a work in progress, so check back soon! Please feel free to submit issues if you have questions or ideas.
 
 The basic idea is you point `ndnp_iiif.py` at a path where you have an NDNP
 batch stored, and a directory where you would like to build your IIIF data.
