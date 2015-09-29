@@ -24,9 +24,10 @@ ns = {
 
 
 def main():
-    parser = argparse.ArgumentParser(description="convert ndnp to iiif")
-    parser.add_argument('batch_dir', type=str, help="ndnp batch directory")
-    parser.add_argument('iiif_dir', type=str, help="where to write iiif")
+    parser = argparse.ArgumentParser(description="convert NDNP to IIIF")
+    parser.add_argument('batch_dir', type=str, help="NDNP batch directory")
+    parser.add_argument('iiif_dir', type=str, help="where to write IIIF")
+    parser.add_argument('--base_uri', type=str, default='/', help="base URI for IIIF data") 
     args = parser.parse_args()
     if not isdir(args.batch_dir):
         print("no such directory %s" % args.batch_dir)
@@ -34,7 +35,7 @@ def main():
     if not isdir(args.iiif_dir):
         print("no such directory %s" % args.iiif_dir)
         return
-    batch = load_batch(args.batch_dir, args.iiif_dir)
+    batch = load_batch(args.batch_dir, args.iiif_dir, args.base_uri)
     # TODO: print out stats
 
 
@@ -147,7 +148,7 @@ class Issue:
             canvases.append({
                 "@id": page.uri,
                 "@type": "sc:Canvas",
-                "label": "page %s" % page.number,
+                "label": "page %s" % page.sequence,
                 "height": page.height,
                 "width": page.width,
                 "thumbnail": page.thumbnail(tiles_dir),
