@@ -4,7 +4,7 @@
     {
       "canvases": [
         {
-          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/1/full/421/0/default.jpg", 
+          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/1/full/421,/0/default.jpg", 
           "height": 9068, 
           "width": 6739, 
           "images": [
@@ -31,7 +31,7 @@
           "@type": "sc:Canvas"
         }, 
         {
-          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/2/full/421/0/default.jpg", 
+          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/2/full/421,/0/default.jpg", 
           "height": 9068, 
           "width": 6739, 
           "images": [
@@ -58,7 +58,7 @@
           "@type": "sc:Canvas"
         }, 
         {
-          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/3/full/423/0/default.jpg", 
+          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/3/full/423,/0/default.jpg", 
           "height": 9055, 
           "width": 6772, 
           "images": [
@@ -85,7 +85,7 @@
           "@type": "sc:Canvas"
         }, 
         {
-          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/4/full/421/0/default.jpg", 
+          "thumbnail": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/4/full/421,/0/default.jpg", 
           "height": 9068, 
           "width": 6739, 
           "images": [
