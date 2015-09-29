@@ -236,7 +236,7 @@ class Page:
         width_dirs = os.listdir(join(tiles_dir, "full"))
         width_dirs = [s.strip(",") for s in width_dirs]
         width_dirs.sort(lambda a, b: cmp(int(b), int(a)))
-        max_width = width_dirs[0]
+        max_width = width_dirs[0] + ','
         return join(self.uri, "full", max_width, '0', 'default.jpg')
 
     @property
