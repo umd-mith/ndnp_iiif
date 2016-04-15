@@ -11,25 +11,25 @@
   </style>
 </head>
 <body>
-  // An element to contain the viewer instance.
   <div id="viewer"></div>
-
   <script src="mirador/mirador.js"></script>
-  <script type="text/javascript">
+	<script type="text/javascript">
     $(function() {
       Mirador({
-        "id": "viewer", // The CSS ID selector for the containing element.
-        "layout": "1x1", // The number and arrangement of windows ("row"x"column")?
+        "id": "viewer", 
+        "layout": "1x1", 
         "data": [ 
-          {"manifestUri":
-          "http://dms-data.stanford.edu/data/manifests/Walters/qm670kv1873/manifest.json",
-          "location": "Stanford University"},
-          {"manifestUri": "/sn83009569/1865-10-04/issue.json", "location": "University of Maryland"}
+          {
+            "manifestUri": "/sn83009569/1865-10-04/issue.json", 
+            "location": "University of Maryland"
+          }
         ],
-        // This array allows the user to specify which of the included manifests should appear 
-        // in the workspace, and what the configuration of the window (zoom level, open panels, etc.) 
-        // ought to be. To begin with, we will leave it blank. 
-        "windowObjects": []
+        "windowObjects": [
+          {
+            "loadedManifest": "/sn83009569/1865-10-04/issue.json",
+            "viewType": "ImageView"
+          }
+        ]
       });
     });
   </script>

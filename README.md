@@ -13,10 +13,10 @@ manifests and generated tiles are published here on GitHub using GitHub Pages.
 
 Soon you'll be able to `pip install ndnp_iiif` but for now you'll have to:
 
-    git clone https://github.com/umd-mith/ndnp_iiif
-    cd ndnp_iiif
-    pip install -r requirements.txt
-    python setup.py install
+    % git clone https://github.com/umd-mith/ndnp_iiif
+    % cd ndnp_iiif
+    % pip install -r requirements.txt
+    % python setup.py install
 
 ## Usage: 
 
@@ -411,6 +411,24 @@ web:
     └── newspaper.json
 
 ```
+
+## Test
+
+You can run the tests, such as they are like so:
+
+    % python setup.py test
+
+The resulting IIIF data will be left in `test-data/iiif`. If you want you can
+run a simple webserver pointed at that directory, and use the Mirador viewer
+to display the result:
+
+    % cd test-data/iiif
+    % python -m SimpleHTTPServer
+
+and then open [http://localhost:8000](http://localhost:8000) in your browser, at
+which point you should see something like this:
+
+![Mirador Screenshot](/umd-mith/ndnp_iiif/test-data/screenshot.png?raw=true)
 
 [IIIF]: http://iiif.io
 [National Digital Newspaper Program]: http://www.loc.gov/ndnp/

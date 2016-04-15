@@ -245,8 +245,9 @@ class Page:
         return self.uri
 
     def generate_tiles(self, dest):
-        sg = IIIFStatic(self.tiff_filename, dest, 1024, "2.0")
-        sg.generate()
+        tiles_dest = dirname(dest)
+        sg = IIIFStatic(src=self.tiff_filename, dst=tiles_dest, tilesize=1024, api_version="2.0")
+        sg.generate(self.tiff_filename, str(self.sequence))
         info_path = join(dest, "info.json")
         info = json.load(open(info_path))
         info['@id'] = self.service_uri
@@ -309,7 +310,7 @@ class Newspaper:
         path = join(iiif_dir, self.uri.lstrip("/"))
         dir = dirname(path)
         if not isdir(dir):
-            print "making %s" % dir
+            print("making %s" % dir)
             mkdir(dir)
         json.dump(self.iiif(), open(path, "w"), indent=2)
 

@@ -52,8 +52,8 @@ def test_newspaper():
     assert len(n.issues) == 1
 
 def test_iiif_data():
-    #shutil.copytree("test-data/demo/mirador", "test-data/iiif/mirador")
-    #shutil.copyfile("test-data/demo/index.html", "test-data/iiif/index.html")
+    shutil.copytree("test-data/demo/mirador", "test-data/iiif/mirador")
+    shutil.copyfile("test-data/demo/index.html", "test-data/iiif/index.html")
     collection = json.load(open(join(test_iiif, "newspapers.json")))
     assert collection['@id'] == "/newspapers.json"
 
