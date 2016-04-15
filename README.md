@@ -428,7 +428,7 @@ to display the result:
 and then open [http://localhost:8000](http://localhost:8000) in your browser, at
 which point you should see something like this:
 
-![Mirador Screenshot](/umd-mith/ndnp_iiif/test-data/screenshot.png?raw=true)
+![Mirador Screenshot](/test-data/screenshot.png?raw=true)
 
 [IIIF]: http://iiif.io
 [National Digital Newspaper Program]: http://www.loc.gov/ndnp/
