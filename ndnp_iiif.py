@@ -2,6 +2,7 @@
 
 import os
 import json
+import logging
 import argparse
 import datetime
 
@@ -67,33 +68,46 @@ class Batch:
 
     def write_iiif(self, iiif_dir):
         path = join(iiif_dir, "newspapers.json")
+        if isfile(path):
+            iiif = json.load(open(path))
+        else:
+            iiif = None
+
         if not isdir(dirname(path)):
             os.mkdir(dirname(path))
-        json.dump(self.iiif(), open(path, "w"), indent=2)
+        logging.info("writing newspaper collection to %s", path)
+        json.dump(self.iiif(iiif), open(path, "w"), indent=2)
         for newspaper in self.newspapers:
             newspaper.write_iiif(iiif_dir)
             for issue in self.issues:
                 issue.write_iiif(iiif_dir)
 
-    def iiif(self):
-        collections = []
+    def iiif(self, iiif=None):
+        if iiif is None:
+            iiif = {
+                "@context": "http://iiif.io/api/presentation/2/context.json",
+                "@id": self.uri,
+                "@type": "sc:Collection",
+                "label": "Top Level Collection for Example Organization",
+                "description": "Description of Collection",
+                "attribution": "Provided by Example Organization",
+                "collections": []
+            }
+
+        ids = [n['@id'] for n in iiif['collections']]
+
         for newspaper in self.newspapers:
-            collections.append({
+            # no need to add the newspaper if it is already there
+            if newspaper.uri in ids:
+                continue
+            iiif['collections'].append({
                 "@id": newspaper.uri,
                 "@type": "sc:Collection",
                 # TODO: put the newspaper title here
                 "label": newspaper.lccn
             })
 
-        return {
-            "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": self.uri,
-            "@type": "sc:Collection",
-            "label": "Top Level Collection for Example Organization",
-            "description": "Description of Collection",
-            "attribution": "Provided by Example Organization",
-            "collections": collections,
-        }
+        return iiif
 
     def _read(self):
         batch_file = self._find_batch_file()
@@ -139,6 +153,7 @@ class Issue:
         dir = dirname(path)
         if not isdir(dir):
             mkdir(dir)
+        logging.info("writing issue data %s", path)
         json.dump(self.iiif(iiif_dir), open(path, "w"), indent=2)
 
     def iiif(self, iiif_dir):
@@ -308,29 +323,41 @@ class Newspaper:
 
     def write_iiif(self, iiif_dir):
         path = join(iiif_dir, self.uri.lstrip("/"))
+
+        # load any existing iiif from previous batch
+        if isfile(path):
+            logging.info("reading existing newspaper data at %s", path)
+            iiif = json.load(open(path))
+        else:
+            iiif = None
+
         dir = dirname(path)
         if not isdir(dir):
-            print("making %s" % dir)
+            logging.info("making %s", dir)
             mkdir(dir)
-        json.dump(self.iiif(), open(path, "w"), indent=2)
 
-    def iiif(self):
-        manifests = []
+        logging.info("writing newspaper data to %s", path)
+        json.dump(self.iiif(iiif), open(path, "w"), indent=2)
+
+    def iiif(self, iiif=None):
+        if iiif is None:
+            iiif = {
+                "@context": "http://iiif.io/api/presentation/2/context.json",
+                "@id": self.uri,
+                "@type": "sc:Collection",
+                "label": "Newspaper",
+                "attribution": "Provided by Example Organization",
+                "manifests": []
+            }
+
         for issue in self.issues:
-            manifests.append({
+            iiif['manifests'].append({
                 "@id": issue.uri,
                 "@type": "sc:Manifest",
                 "label": issue.date_issued_str
             })
 
-        return {
-            "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": self.uri,
-            "@type": "sc:Collection",
-            "label": "Newspaper",
-            "attribution": "Provided by Example Organization",
-            "manifests": manifests
-        }
+        return iiif
 
     def add_issue(self, issue):
         "link the newspaper to an issue and vice-versa"

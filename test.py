@@ -8,18 +8,18 @@ from ndnp_iiif import load_batch
 from os.path import dirname, isdir, join, relpath
 
 test_data = join(dirname(__file__), 'test-data')
-test_ndnp = join(test_data, 'batch_mdu_kale')
 test_iiif= join(test_data, 'iiif')
+kale = join(test_data, 'batch_mdu_kale')
 
 def setup_module(module):
     if isdir(test_iiif):
         shutil.rmtree(test_iiif)
     os.mkdir(test_iiif)
-    module.batch = load_batch(test_ndnp, test_iiif)
+    module.batch = load_batch(kale, test_iiif)
 
 def test_ok():
     assert isdir(test_data)
-    assert isdir(test_ndnp)
+    assert isdir(kale)
     assert isdir(test_iiif)
 
 def test_batch():
@@ -39,10 +39,10 @@ def test_page():
     p = batch.issues[0].pages[3]
     assert p.sequence == 4
     assert p.number == ""
-    assert relpath(p.tiff_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.tif"
-    assert relpath(p.jp2_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.jp2"
-    assert relpath(p.pdf_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.pdf"
-    assert relpath(p.ocr_filename, test_ndnp) == "sn83009569/00296026165/1865100401/0016.xml"
+    assert relpath(p.tiff_filename, kale) == "sn83009569/00296026165/1865100401/0016.tif"
+    assert relpath(p.jp2_filename, kale) == "sn83009569/00296026165/1865100401/0016.jp2"
+    assert relpath(p.pdf_filename, kale) == "sn83009569/00296026165/1865100401/0016.pdf"
+    assert relpath(p.ocr_filename, kale) == "sn83009569/00296026165/1865100401/0016.xml"
     assert p.width == 6739
     assert p.height == 9068
 
@@ -71,3 +71,20 @@ def test_iiif_data():
     assert canvas['@id'] == '/sn83009569/1865-10-04/1'
     assert canvas['images'][0]['resource']['service']['@id'] == '/sn83009569/1865-10-04/1'
 
+def test_overlay():
+    # loading lilac should result in two issues being present in the newspaper
+    # collection
+
+    lilac = join(test_data, 'batch_mdu_lilac')
+    load_batch(lilac, test_iiif)
+
+    newspaper = json.load(open(join(test_iiif, "sn83009569", "newspaper.json")))
+    assert len(newspaper['manifests']) == 2
+
+def test_new_newspaper():
+    # loading melon should result in two items in the newspapers collection
+    melon = join(test_data, 'batch_mdu_melon')
+    load_batch(melon, test_iiif)
+
+    newspapers = json.load(open(join(test_iiif, "newspapers.json")))
+    assert len(newspapers['collections']) == 2
