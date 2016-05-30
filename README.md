@@ -432,4 +432,4 @@ which point you should see something like this:
 
 [IIIF]: http://iiif.io
 [National Digital Newspaper Program]: http://www.loc.gov/ndnp/
-[here]: http://mith.us/ndnp_iiif
+[here]: https://umd-mith.github.io/ndnp_iiif/
