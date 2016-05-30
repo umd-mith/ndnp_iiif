@@ -4,12 +4,12 @@
   "label": "Top Level Collection for Example Organization", 
   "collections": [
     {
-      "@id": "http://mith.us/ndnp_iiif/sn83009569/newspaper.json", 
+      "@id": "http://umd-mith.github.io/ndnp_iiif/sn83009569/newspaper.json", 
       "@type": "sc:Collection", 
       "label": "sn83009569"
     }
   ], 
   "@context": "http://iiif.io/api/presentation/2/context.json", 
-  "@id": "http://mith.us/ndnp_iiif/newspapers.json", 
+  "@id": "http://umd-mith.github.io/ndnp_iiif/newspapers.json", 
   "@type": "sc:Collection"
 }

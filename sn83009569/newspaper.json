@@ -2,13 +2,13 @@
   "attribution": "Provided by Example Organization", 
   "manifests": [
     {
-      "@id": "http://mith.us/ndnp_iiif/sn83009569/1865-10-04/issue.json", 
+      "@id": "http://umd-mith.github.io/ndnp_iiif/sn83009569/1865-10-04/issue.json", 
       "@type": "sc:Manifest", 
       "label": "1865-10-04"
     }
   ], 
   "@context": "http://iiif.io/api/presentation/2/context.json", 
   "label": "Newspaper", 
-  "@id": "http://mith.us/ndnp_iiif/sn83009569/newspaper.json", 
+  "@id": "http://umd-mith.github.io/ndnp_iiif/sn83009569/newspaper.json", 
   "@type": "sc:Collection"
 }
