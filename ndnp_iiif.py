@@ -25,13 +25,15 @@ ns = {
 
 
 def main():
-    parser = argparse.ArgumentParser(description="convert NDNP to IIIF")
-    parser.add_argument('batch_dir', type=str, help="NDNP batch directory")
-    parser.add_argument('iiif_dir', type=str, help="where to write IIIF")
-    parser.add_argument('--base_uri', type=str, default='/', help="base URI for IIIF data") 
+    parser = argparse.ArgumentParser(description='convert NDNP to IIIF')
+    parser.add_argument('batch_dir', type=str, help='NDNP batch directory')
+    parser.add_argument('iiif_dir', type=str, help='where to write IIIF')
+    parser.add_argument('--base_uri', type=str, default='/', help='base URI for IIIF data') 
+    parser.add_argument('--image_dir', type=str, default=None, help='where to write images')
+    parser.add_argument('--image_base_uri', type=str, default=None, help='base URI for IIIF images')
     args = parser.parse_args()
     if not isdir(args.batch_dir):
-        print("no such directory %s" % args.batch_dir)
+        print('no such directory %s' % args.batch_dir)
         return
     batch = load_batch(args.batch_dir, args.iiif_dir, args.base_uri)
     # TODO: print out stats
