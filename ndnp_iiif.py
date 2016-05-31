@@ -251,10 +251,13 @@ class Page:
         return urljoin(self.issue.uri, str(self.sequence))
 
     def thumbnail(self, tiles_dir):
+        """
+        Get the widest thumbnail generated in the tiles_dir.
+        """
         width_dirs = os.listdir(join(tiles_dir, "full"))
-        width_dirs = [s.strip(",") for s in width_dirs]
-        width_dirs.sort(lambda a, b: cmp(int(b), int(a)))
-        max_width = width_dirs[0] + ','
+        widths = [int(s.split(",")[0]) for s in width_dirs]
+        widths.sort()
+        max_width = "%s," % widths.pop()
         return join(self.uri, "full", max_width, '0', 'default.jpg')
 
     @property
