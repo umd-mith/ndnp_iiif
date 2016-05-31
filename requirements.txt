@@ -1,5 +1,5 @@
 six
+iiif
 lxml
 pillow
 pytest
-git+https://github.com/zimeon/iiif.git
