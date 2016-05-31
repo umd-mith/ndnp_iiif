@@ -124,6 +124,6 @@ which point you should see something like this:
 
 [IIIF]: http://iiif.io
 [National Digital Newspaper Program]: http://www.loc.gov/ndnp/
-[here]: https://umd-mith.github.io/ndnp_iiif/
+[here]: http://umd-mith.github.io/ndnp_iiif/
 [LCCN]: https://en.wikipedia.org/wiki/Library_of_Congress_Control_Number
 [mapping]: https://en.wikipedia.org/wiki/Library_of_Congress_Control_Number
