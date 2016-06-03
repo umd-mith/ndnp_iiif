@@ -3,7 +3,7 @@ import datetime
 
 from PIL import Image
 from lxml import etree
-from six.moves.urllib.parse import urljoin
+from six.moves.urllib.parse import urljoin, unquote
 from os.path import abspath, dirname, isdir, isfile, join
 
 
@@ -141,11 +141,12 @@ class Page:
 
             # get the absolute path to the file
             file_name = file_el.xpath('string(./mets:FLocat/@xlink:href)', namespaces=ns)
-            file_name = abspath(join(dirname(doc.docinfo.URL), file_name))
+            file_name = abspath(join(dirname(unquote(doc.docinfo.URL)), file_name))
 
             # record the path and image height/width depending on file type
             if file_type == 'master':
                 self.tiff_filename = file_name
+                logging.info("reading %s", file_name)
                 i = Image.open(file_name)
                 self.width, self.height = i.size
             elif file_type == 'service':

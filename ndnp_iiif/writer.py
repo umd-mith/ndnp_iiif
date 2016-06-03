@@ -4,7 +4,7 @@ import iiif.static
 
 from os import mkdir, listdir
 from six.moves.urllib.parse import urljoin
-from os.path import dirname, isdir, isfile, join
+from os.path import dirname, isdir, isfile, join, relpath
 
 
 class Writer:
@@ -29,8 +29,6 @@ class Writer:
 
         for issue in batch.issues:
             self.write_issue(issue)
-            for page in issue.pages:
-                self.write_page(page)
 
 
     def uri(self, path):
@@ -109,6 +107,7 @@ class Writer:
         logging.info("writing newspaper data to %s", path)
         json.dump(iiif, open(path, "w"), indent=2)
 
+
     def write_issue(self, issue):
         path = self.abspath(issue.uri)
         dir = dirname(path)
@@ -117,9 +116,19 @@ class Writer:
 
         canvases = []
         for page in issue.pages:
-            tiles_dir = self.abspath(page.uri)
-            self.generate_tiles(page, tiles_dir)
             page_uri = self.uri(page.uri)
+            
+            if self.image_server:
+                tiff_filename = relpath(page.tiff_filename, dirname(issue.batch.dir.rstrip("/")))
+                print("Joining %s and %s" % (self.image_server, tiff_filename))
+                service_uri = urljoin(self.image_server, tiff_filename)
+                thumbnail_url = join(service_uri, "full", '200', '0', 'default.jpg')
+            else:
+                tiles_dir = self.abspath(page.uri)
+                # TODO: have generate tiles return the thumbnail?
+                self.generate_tiles(page, tiles_dir)
+                service_uri = page_uri
+                thumbnail_url = self.thumbnail_url(page)
 
             canvases.append({
                 "@id": page_uri,
@@ -127,7 +136,7 @@ class Writer:
                 "label": "page %s" % page.sequence,
                 "height": page.height,
                 "width": page.width,
-                "thumbnail": self.thumbnail_url(page),
+                "thumbnail": thumbnail_url,
                 "images": [{
                     "@id": page_uri,
                     "@type": "oa:Annotation",
@@ -139,7 +148,7 @@ class Writer:
                         "height": page.height,
                         "width": page.width,
                         "service": {
-                            "@id": page_uri,
+                            "@id": service_uri,
                             "@context": "http://iiif.io/api/image/2/context.json",
                             "profile": "http://iiif.io/api/image/2/level0.json"
                         }
@@ -166,8 +175,6 @@ class Writer:
         logging.info("writing issue data %s", path)
         json.dump(iiif, open(path, "w"), indent=2)
 
-    def write_page(self, page):
-        pass
 
     def generate_tiles(self, page, dest):
         tiles_dest = dirname(dest)
@@ -177,6 +184,7 @@ class Writer:
         info = json.load(open(info_path))
         info['@id'] = self.uri(page.uri)
         json.dump(info, open(info_path, 'w'), indent=2)
+
 
     def thumbnail_url(self, page):
         """
