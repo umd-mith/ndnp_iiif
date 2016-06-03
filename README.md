@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/umd-mith/ndnp_iiif.svg)](http://travis-ci.org/umd-mith/ndnp_iiif)
 
-`ndnp_iiif.py` is a command line tool for creating [IIIF] manifests for
+`ndnp_iiif` is a command line tool for creating [IIIF] manifests for
 [National Digital Newspaper Program] data. This IIIF data can then be mounted
 on the Web and viewed using a IIIF compatible viewer.
 
@@ -36,11 +36,11 @@ Soon you'll be able to `pip install ndnp_iiif` but for now you'll have to:
 
 ### Static Images
 
-The simplest usage is to point `ndnp_iiif.py` at a path where you have an NDNP
+The simplest usage is to point `ndnp_iiif` at a path where you have an NDNP
 batch stored, and a web accessible directory where you would like to build 
 your IIIF data:
 
-    % ndnp_iiif.py /vol/ndnp/batch_mdu_kale/ /var/www/
+    % ndnp_iiif /vol/ndnp/batch_mdu_kale/ /var/www/
 
 This will cut static tiles for the page images that will be referenced in the
 manifests. The resulting IIIF data will be laid out on the filesystem as a
@@ -102,13 +102,38 @@ page issue would look like (some of the tile filenames are ellided):
 
 ### IIIF Image Server
 
-TODO: doc here
+If you are using an external IIIF Image Server then `ndnp_iiif` will write out
+the IIIF Presentation API data to the filesystem and then reference the TIFF or
+JPEG2000 file using the given IIIF Image Server and Prefix. For example:
+
+
+    % ndnp_iiif /vol/ndnp/batch_mdu_kale/ /var/www/ --image-server http://images.example.edu/
+
+will create the following files:
+
+```
+/var/www
+├── newspapers.json
+└── sn83009569
+    ├── 1865-10-04
+    │   └── issue.json
+    └── newspaper.json
+```
+
+The images referenced in `issue.json` will target http://images.example.edu/
+using the path for a TIFF file in the batch, for example:
+
+    http://images.example.edu/batch_mdu_lilac/sn83009569/00296026165/1865100401/0013.tif
+
+You will need to make sure that the images have been made available on the IIIF
+image server.
+
 
 ## Test
 
 You can run the tests, such as they are like so:
 
-    % python setup.py test
+    % python setup test
 
 The resulting IIIF data will be left in `test-data/iiif`. If you want you can
 run a simple webserver pointed at that directory, and use the Mirador viewer

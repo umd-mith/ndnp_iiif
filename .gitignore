@@ -5,3 +5,4 @@ __pycache__
 *.sublime-*
 test-data/iiif
 *.egg-info*
+*.log

@@ -26,7 +26,7 @@ setup(
     author = 'Ed Summers',
     author_email = 'ehs@pobox.com',
     py_modules = ['ndnp_iiif'],
-    scripts = ['ndnp_iiif.py'],
+    scripts = ['bin/ndnp_iiif'],
     description = 'convert ndnp data to iiif',
     test_suite = 'test',
     install_requires = requirements,
