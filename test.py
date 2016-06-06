@@ -21,7 +21,7 @@ def setup_module(module):
     os.mkdir(test_iiif)
     module.batch = load_batch(kale, test_iiif)
 
-def atest_ok():
+def test_ok():
     assert isdir(test_data)
     assert isdir(kale)
     assert isdir(test_iiif)
@@ -53,6 +53,12 @@ def test_page():
 def test_newspaper():
     n = batch.issues[0].newspaper
     assert n.lccn == "sn83009569"
+    assert n.title == 'Baltimore daily commercial.'
+    assert n.publisher == 'W. Wales & Co.'
+    assert n.place_of_publication == 'Baltimore, Md.'
+    assert n.start_year == '1865'
+    assert n.end_year == '1867'
+
     assert len(n.issues) == 1
 
 def test_iiif_data():

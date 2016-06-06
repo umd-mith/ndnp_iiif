@@ -3,3 +3,4 @@ iiif
 lxml
 pillow
 pytest
+requests

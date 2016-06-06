@@ -1,5 +1,6 @@
 import logging
 import datetime
+import requests
 
 from PIL import Image
 from lxml import etree
@@ -40,6 +41,7 @@ class Batch:
 
     def _read(self):
         batch_file = self._find_batch_file()
+        logging.info("reading batch %s", batch_file)
         doc = etree.parse(batch_file)
         for e in doc.xpath('ndnp:issue', namespaces=ns):
             mets_file = join(self.dir, e.text)
@@ -77,6 +79,7 @@ class Issue:
     def uri(self):
         return urljoin(self.newspaper.uri, join(self.date_issued_str, "issue.json"))
     def _read(self):
+        logging.info("reading issue %s", self.mets_file)
         doc = etree.parse(self.mets_file)
 
         # get mods metadata for the issue
@@ -146,7 +149,6 @@ class Page:
             # record the path and image height/width depending on file type
             if file_type == 'master':
                 self.tiff_filename = file_name
-                logging.info("reading %s", file_name)
                 i = Image.open(file_name)
                 self.width, self.height = i.size
             elif file_type == 'service':
@@ -155,6 +157,10 @@ class Page:
                 self.pdf_filename = file_name
             elif file_type == 'ocr':
                 self.ocr_filename = file_name
+
+        logging.info("read page: %s %s", 
+                     self.issue.date_issued_str,
+                     self.sequence)
 
 
 class Newspaper:
@@ -168,9 +174,14 @@ class Newspaper:
             return Newspaper(lccn)
 
     def __init__(self, lccn):
+        self.title = None
+        self.publisher = None
+        self.place_of_publication = None
         self.lccn = lccn
         self.issues = []
-        # TODO: get needed metadata from somewhere :)
+        self.start_year = None
+        self.end_year = None
+        self._read()
 
     @property
     def uri(self):
@@ -180,6 +191,19 @@ class Newspaper:
         "link the newspaper to an issue and vice-versa"
         self.issues.append(issue)
         issue.newspaper = self
+
+    def _read(self):
+        url = 'http://chroniclingamerica.loc.gov/lccn/%s.json' % self.lccn
+        resp = requests.get(url)
+        if resp.status_code == 200:
+            info = resp.json()
+            self.title = info.get('name')
+            self.place_of_publication = info.get('place_of_publication')
+            self.publisher = info.get('publisher')
+            self.subject = info.get('subjects', [])
+            self.place = info.get('place', [])
+            self.start_year = info.get('start_year')
+            self.end_year = info.get('end_year')
 
 
 def _dmd_mods(doc, dmdid):

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import logging
 import argparse
 
@@ -9,17 +10,21 @@ from ndnp_iiif import load_batch
 parser = argparse.ArgumentParser(description='convert NDNP to IIIF')
 parser.add_argument('batch_dir', type=str, help='NDNP batch directory')
 parser.add_argument('iiif_dir', type=str, help='where to write IIIF')
-parser.add_argument('--base_uri', type=str, default='', help='base URI for IIIF data') 
+parser.add_argument('--base-url', type=str, default='', help='base URI for IIIF data') 
 parser.add_argument('--image-server', type=str, help='IIIF Image server and prefix (if used)')
-parser.add_argument('--log', type=str, default="ndnp_iiif.log", help='log activity to this file')
+parser.add_argument('--log', type=str, help='log activity to this file')
 
 args = parser.parse_args()
-logging.basicConfig(filename=args.log, level=logging.INFO)
+
+if args.log:
+    logging.basicConfig(filename=args.log, level=logging.INFO)
+else:
+    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 if not os.path.isdir(args.batch_dir):
     print('no such directory %s' % args.batch_dir)
 
-batch = load_batch(args.batch_dir, args.iiif_dir, args.base_uri, args.image_server)
+batch = load_batch(args.batch_dir, args.iiif_dir, args.base_url, args.image_server)
 # TODO: print out stats?
 
 

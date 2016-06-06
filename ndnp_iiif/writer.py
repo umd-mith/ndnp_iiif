@@ -13,15 +13,16 @@ class Writer:
     of NDNP data to disk as IIIF.
     """
 
-    def __init__(self, iiif_dir, base_uri="", image_server=""):
+    def __init__(self, iiif_dir, base_url="", image_server=""):
         self.iiif_dir = iiif_dir
-        self.base_uri = base_uri
+        self.base_url = base_url
         self.image_server = image_server
         if not isdir(iiif_dir):
             mkdir(iiif_dir)
 
 
     def write(self, batch):
+        logging.info("writing batch %s to %s", batch, self.iiif_dir)
         self.write_newspapers(batch)
 
         for newspaper in batch.newspapers:
@@ -32,7 +33,7 @@ class Writer:
 
 
     def uri(self, path):
-        return urljoin(self.base_uri, path)
+        return urljoin(self.base_url, path)
 
 
     def abspath(self, path):
@@ -40,8 +41,8 @@ class Writer:
 
 
     def write_newspapers(self, batch):
-        path = self.abspath(batch.uri)
-        url = self.uri(batch.uri)
+        path = self.abspath('newspapers.json')
+        url = self.uri('newspapers.json')
 
         if isfile(path):
             iiif = json.load(open(path))
@@ -58,13 +59,15 @@ class Writer:
             }
 
         # get existing newspaper identifiers
-        ids = [n['@id'] for n in iiif['collections']]
+        ids = set([n['@id'] for n in iiif['collections']])
 
         # add newspaper titles that aren't already there
         for newspaper in batch.newspapers:
-            if url not in ids:
+            np_uri = self.uri(newspaper.uri)
+            if np_uri not in ids:
+                ids.add(np_uri)
                 iiif['collections'].append({
-                    "@id": url,
+                    "@id": np_uri,
                     "@type": "sc:Collection",
                     # TODO: put the newspaper title here
                     "label": newspaper.lccn
@@ -116,13 +119,18 @@ class Writer:
 
         canvases = []
         for page in issue.pages:
+
+            # some pages can be blank and have no image
+            if not page.tiff_filename:
+                continue
+
             page_uri = self.uri(page.uri)
             
             if self.image_server:
                 tiff_filename = relpath(page.tiff_filename, dirname(issue.batch.dir.rstrip("/")))
                 print("Joining %s and %s" % (self.image_server, tiff_filename))
                 service_uri = urljoin(self.image_server, tiff_filename)
-                thumbnail_url = join(service_uri, "full", '200', '0', 'default.jpg')
+                thumbnail_url = join(service_uri, "full", '400,', '0', 'default.jpg')
             else:
                 tiles_dir = self.abspath(page.uri)
                 # TODO: have generate tiles return the thumbnail?

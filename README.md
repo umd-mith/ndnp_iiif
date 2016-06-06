@@ -37,18 +37,24 @@ Soon you'll be able to `pip install ndnp_iiif` but for now you'll have to:
 ### Static Images
 
 The simplest usage is to point `ndnp_iiif` at a path where you have an NDNP
-batch stored, and a web accessible directory where you would like to build 
-your IIIF data:
+batch stored, and a web accessible directory where you would like to build your
+IIIF data, as well as an absolute base URL where your data will be mounted on
+the web:
 
-    % ndnp_iiif /vol/ndnp/batch_mdu_kale/ /var/www/
+    % ndnp_iiif /vol/ndnp/batch_mdu_kale/ /var/www/newspapers --base-url http://example.edu/newspapers/
 
 This will cut static tiles for the page images that will be referenced in the
-manifests. The resulting IIIF data will be laid out on the filesystem as a
-static site. The [LCCN] for the newspaper is used for the top level directory,
-each issue is placed into a sub-directory using the issue date, and then each
-page is placed in a sub-directory of the issue. For each image encountered
-static tiles are cut and placed inside the page directory. Here's what a four
-page issue would look like (some of the tile filenames are ellided):
+manifests.  The `--base-url` parameter is optional but strongly encouraged 
+since it will result in absolute URLs being cooked into your IIIF data. 
+Absolute URLs are preferred to relative URLs since they seem to work more 
+predictably in IIIF viewers.
+
+The resulting IIIF data will be laid out on the filesystem as a static site. The
+[LCCN] for the newspaper is used for the top level directory, each issue is
+placed into a sub-directory using the issue date, and then each page is placed
+in a sub-directory of the issue. For each image encountered static tiles are cut
+and placed inside the page directory.  Here's what a four page issue would look
+like (some of the tile filenames are ellided):
 
 ```
 /var/www
