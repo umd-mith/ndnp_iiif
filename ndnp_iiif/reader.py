@@ -178,9 +178,11 @@ class Newspaper:
         self.publisher = None
         self.place_of_publication = None
         self.lccn = lccn
-        self.issues = []
+        self.subject = []
+        self.place = []
         self.start_year = None
         self.end_year = None
+        self.issues = []
         self._read()
 
     @property

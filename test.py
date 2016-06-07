@@ -70,6 +70,8 @@ def test_iiif_data():
 
     subcollection = json.load(open(join(test_iiif, "sn83009569", "newspaper.json")))
     assert subcollection['@id'] == "sn83009569/newspaper.json"
+    assert subcollection['metadata'][0]['label'] == 'lccn'
+    assert subcollection['metadata'][0]['value'] == 'sn83009569'
     assert len(subcollection['manifests']) == 1
 
     manifest = json.load(open(join(test_iiif, "sn83009569", "1865-10-04", "issue.json")))

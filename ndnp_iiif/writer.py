@@ -13,10 +13,11 @@ class Writer:
     of NDNP data to disk as IIIF.
     """
 
-    def __init__(self, iiif_dir, base_url="", image_server=""):
+    def __init__(self, iiif_dir, base_url="", image_server=None, attribution=None):
         self.iiif_dir = iiif_dir
         self.base_url = base_url
         self.image_server = image_server
+        self.attribution = attribution
         if not isdir(iiif_dir):
             mkdir(iiif_dir)
 
@@ -52,11 +53,12 @@ class Writer:
                 "@context": "http://iiif.io/api/presentation/2/context.json",
                 "@id": url,
                 "@type": "sc:Collection",
-                "label": "Top Level Collection for Example Organization",
-                "description": "Description of Collection",
-                "attribution": "Provided by Example Organization",
+                "label": "All Newspapers",
                 "collections": []
             }
+            
+            if self.attribution:
+                iiif['attribution'] = self.attribution
 
         # get existing newspaper identifiers
         ids = set([n['@id'] for n in iiif['collections']])
@@ -69,8 +71,7 @@ class Writer:
                 iiif['collections'].append({
                     "@id": np_uri,
                     "@type": "sc:Collection",
-                    # TODO: put the newspaper title here
-                    "label": newspaper.lccn
+                    "label": newspaper.title
                 })
 
         # write iiif data to disk 
@@ -90,21 +91,26 @@ class Writer:
             logging.info("reading existing newspaper data at %s", path)
             iiif = json.load(open(path))
         else:
-            # TODO: pull label and attribution from somewhere
             iiif = {
                 "@context": "http://iiif.io/api/presentation/2/context.json",
                 "@id": self.uri(newspaper.uri),
                 "@type": "sc:Collection",
-                "label": "Newspaper",
+                "label": newspaper.title,
                 "attribution": "Provided by Example Organization",
+                "metadata": self.newspaper_metadata(newspaper),
                 "manifests": []
             }
+
+            if self.attribution:
+                iiif["attribution"] = self.attribution
+
+            iiif["metadata"] = self.newspaper_metadata(newspaper)
 
         for issue in newspaper.issues:
             iiif['manifests'].append({
                 "@id": self.uri(issue.uri),
                 "@type": "sc:Manifest",
-                "label": issue.date_issued_str
+                "label": "%s (%s)" % (issue.newspaper.title, issue.date_issued_str)
             })
 
         logging.info("writing newspaper data to %s", path)
@@ -172,12 +178,16 @@ class Writer:
             "canvases": canvases,
         }
 
+        metadata = self.newspaper_metadata(issue.newspaper)
+        metadata.append({"label": "date_issued", "value": issue.date_issued_str})
+
         iiif = {
             "@context": "http://iiif.io/api/presentation/2/context.json",
             "@id": self.uri(issue.uri),
             "@type": "sc:Manifest",
             "label": issue.date_issued_str,
-            "sequences": [sequence]
+            "sequences": [sequence],
+            "metadata": metadata
         }
 
         logging.info("writing issue data %s", path)
@@ -205,3 +215,15 @@ class Writer:
         max_width = "%s," % widths.pop()
         path = join(page.uri, "full", max_width, '0', 'default.jpg')
         return self.uri(path)
+
+
+    def newspaper_metadata(self, n):
+        return [
+            {"label": "lccn", "value": n.lccn},
+            {"label": "publisher", "value": n.publisher},
+            {"label": "place_of_publication", "value": n.place_of_publication},
+            {"label": "start_year", "value": n.start_year},
+            {"label": "end_year", "value": n.end_year},
+            {"label": "subject", "value": [{"@value": s} for s in n.subject]},
+            {"label": "place", "value": [{"@value": s} for s in n.place]},
+        ]
